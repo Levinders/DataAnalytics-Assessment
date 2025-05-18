@@ -17,7 +17,7 @@ Approach:
 To solve this, I used Common Table Expressions (CTEs) to make the query easier to read and manage by breaking the logic into clear steps instead of writing everything in one long query. The first CTE (monthly_counts) calculates the number of transactions each customer makes per month. The second CTE (user_avg) then computes the average monthly transactions for each customer. I categorized customers based on this average into "High", "Medium", or "Low" frequency groups, and finally counted how many customers fall into each category.
 
 Challenges:
-The challenging part was ensuring I correctly calculated monthly averages correctly per customer. I solved this by using two CTEs — one to count monthly transactions, and another to get the average per customer before applying the frequency labels.
+The challenging part was ensuring I calculated monthly averages correctly per customer. I solved this by using two CTEs — one to count monthly transactions, and another to get the average per customer before applying the frequency labels.
 
 ## 3. Account Inactivity Alert
 Goal: Identify savings or investment plans with no transactions in the past 365 days.
