@@ -20,3 +20,7 @@ JOIN savings_savingsaccount s ON u.id = s.owner_id
 
 GROUP BY u.id, name
 ORDER BY estimated_clv DESC;
+
+
+
+
