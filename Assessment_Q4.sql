@@ -9,16 +9,16 @@
 ------------------------------------------------------------------------------------------------------
 
 SELECT 
-    u.id AS customer_id,
-    CONCAT(u.first_name, ' ', u.last_name) AS name,
-    TIMESTAMPDIFF(MONTH, u.date_joined, CURDATE()) AS tenure_months,
-    COUNT(s.id) AS total_transactions,
-    ROUND(((SUM(s.confirmed_amount) / NULLIF(TIMESTAMPDIFF(MONTH, u.date_joined, CURDATE()), 0)) * 12 * 0.001), 2) AS estimated_clv
-FROM users_customuser u
+    uc.id AS customer_id,
+    CONCAT(uc.first_name, ' ', uc.last_name) AS name,
+    TIMESTAMPDIFF(MONTH, uc.date_joined, CURDATE()) AS tenure_months,
+    COUNT(ss.id) AS total_transactions,
+    ROUND(((SUM(ss.confirmed_amount) / NULLIF(TIMESTAMPDIFF(MONTH, uc.date_joined, CURDATE()), 0)) * 12 * 0.001), 2) AS estimated_clv
+FROM users_customuser uc
 
-JOIN savings_savingsaccount s ON u.id = s.owner_id
+JOIN savings_savingsaccount ss ON uc.id = ss.owner_id
 
-GROUP BY u.id, name
+GROUP BY uc.id, name
 ORDER BY estimated_clv DESC;
 
 
